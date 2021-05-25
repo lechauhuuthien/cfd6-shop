@@ -6,7 +6,6 @@ function ProductItem({ img, status, type, name, price, discountPrice }) {
   const { t } = useTranslate();
   /*------------------------------*/
   return (
-    <div className="col-6 col-md-4 col-lg-3">
       <div className="card mb-7">
         {/* Badge */}
         {status && (
@@ -94,7 +93,6 @@ function ProductItem({ img, status, type, name, price, discountPrice }) {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

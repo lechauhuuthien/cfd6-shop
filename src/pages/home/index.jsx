@@ -8,7 +8,7 @@ import TopSeller from "./components/TopSeller";
 import Review from "./components/Review";
 import Brand from "./components/Brand";
 
-function Home() {
+function HomePage() {
   return (
     <>
       <Promote text="⚡️ Happy Holiday Deals on Everything ⚡️" />
@@ -23,4 +23,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

@@ -94,9 +94,9 @@ const DATA = [
 ];
 
 function TopSeller() {
-    /*------------------------------*/
-    const { t } = useTranslate();
-    /*------------------------------*/
+  /*------------------------------*/
+  const { t } = useTranslate();
+  /*------------------------------*/
   return (
     <section className="py-12">
       <div className="container">
@@ -126,8 +126,12 @@ function TopSeller() {
           <div className="tab-pane fade show active" id="topSellersTab">
             <div className="row">
               {DATA &&
-                DATA.map((data) => {
-                  return <ProductItem {...data} />;
+                DATA.map((data, i) => {
+                  return (
+                    <div key={i} className="col-6 col-md-4 col-lg-3">
+                      <ProductItem {...data} />
+                    </div>
+                  );
                 })}
             </div>
           </div>
