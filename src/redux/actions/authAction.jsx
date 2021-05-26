@@ -1,5 +1,5 @@
 import authAPI from '../../services/authAPI';
-import { LOGIN, LOGOUT, SET_LOGIN_ERROR, SET_LOGIN_STATUS, UPDATE_USER } from '../type';
+import { LOGIN, LOGOUT, REGISTER, SET_LOGIN_ERROR, SET_LOGIN_STATUS, SET_REGISTER_ERROR, UPDATE_USER } from '../type';
 
 export function loginAction(data) {
 	return async (dispatch) => {
@@ -29,6 +29,26 @@ export function setLoginStatus(status) {
 	return {
 		type: SET_LOGIN_STATUS,
 		payload: status,
+	};
+}
+export function register(data) {
+	return async (dispatch) => {
+		let res = await authAPI.register(data);
+		console.log('res :>> ', res);
+		if (res?.data) {
+			dispatch({
+				type: REGISTER,
+				payload: res.data,
+			});
+		} else if (res?.error) {
+			dispatch(registerError(res?.error || res?.error?.password));
+		}
+	};
+}
+export function registerError(error) {
+	return {
+		type: SET_REGISTER_ERROR,
+		payload: error,
 	};
 }
 export function updateUser(data) {

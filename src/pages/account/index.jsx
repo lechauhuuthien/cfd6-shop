@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { logoutAction } from '../../redux/actions/authAction';
 import AccountAddressEdit from './components/AccountAddressEdit';
 import AccountAddresses from './components/AccountAddresses';
 import AccountInfo from './components/AccountInfo';
@@ -10,9 +12,10 @@ import AccountPayment from './components/AccountPayment';
 import AccountPaymentEdit from './components/AccountPaymentEdit';
 import AccountWishlist from './components/AccountWishlist';
 
-function AccountPage() {
+function AccountPage({ children }) {
 	/*------------------------------*/
 	const { url } = useRouteMatch();
+	const dispatch = useDispatch();
 	/*------------------------------*/
 	return (
 		<section className="pt-7 pb-12">
@@ -58,14 +61,21 @@ function AccountPage() {
 								>
 									Payment Methods
 								</NavLink>
-								<a className="list-group-item list-group-item-action dropright-toggle" href="#!">
+								<a
+									className="list-group-item list-group-item-action dropright-toggle"
+									href="#!"
+									onClick={(e) => {
+										e.preventDefault();
+										dispatch(logoutAction());
+									}}
+								>
 									Logout
 								</a>
 							</div>
 						</nav>
 					</div>
 					<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
-						<Switch>
+						{/* <Switch>
 							<Route path={`${url}/wishlist`} component={AccountWishlist} />
 							<Route path={`${url}/info`} component={AccountInfo} />
 							<Route path={`${url}/addresses`} component={AccountAddresses} />
@@ -75,7 +85,8 @@ function AccountPage() {
 							<Route path={`${url}/orders/:slug`} component={AccountOrder} />
 							<Route path={`${url}/orders`} component={AccountOrders} />
 							<Route path={`${url}`} component={AccountOrders} />
-						</Switch>
+						</Switch> */}
+						{children}
 					</div>
 				</div>
 			</div>

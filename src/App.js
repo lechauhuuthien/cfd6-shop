@@ -15,32 +15,43 @@ import ShippingPage from './pages/shipping';
 import ShoppingCartPage from './pages/shoppingCart';
 import StoreLocatorPage from './pages/storeLocator';
 import AccountPage from './pages/account';
+import PrivateRoute from './core/PrivateRoute';
+import { Provider } from 'react-redux';
+import store from './redux';
+import './assets/css/main.scss';
+import { routerConfig } from './core/routerConfig';
+import routers from './routers';
 
 function App() {
 	return (
-		<Router>
-			<div className="App">
-				<MainLayout>
-					<Switch>
-						<Route exact path="/" component={HomePage} />
-						<Route path="/shop" component={ShopPage} />
-						<Route path="/about" component={AboutPage} />
-						<Route path="/blog" component={BlogPage} />
-						<Route path="/auth" component={AuthPage} />
-						<Route path="/checkout" component={CheckoutPage} />
-						<Route path="/contact" component={ContactPage} />
-						<Route path="/faq" component={FaqPage} />
-						<Route path="/order-complete" component={OrderCompletePage} />
-						<Route path="/product" component={ProductPage} />
-						<Route path="/shipping" component={ShippingPage} />
-						<Route path="/shopping-cart" component={ShoppingCartPage} />
-						<Route path="/store-locator" component={StoreLocatorPage} />
-						<Route path="/account" component={AccountPage} />
-						<Route component={Error404Page} />
-					</Switch>
-				</MainLayout>
-			</div>
-		</Router>
+		<Provider store={store}>
+			<Router>
+				<div className="App">
+					{
+						routerConfig(routers)
+					}
+					{/* <MainLayout>
+						<Switch>
+							<Route exact path="/" component={HomePage} />
+							<Route path="/shop" component={ShopPage} />
+							<Route path="/about" component={AboutPage} />
+							<Route path="/blog" component={BlogPage} />
+							<Route path="/auth" component={AuthPage} />
+							<Route path="/checkout" component={CheckoutPage} />
+							<Route path="/contact" component={ContactPage} />
+							<Route path="/faq" component={FaqPage} />
+							<Route path="/order-complete" component={OrderCompletePage} />
+							<Route path="/product" component={ProductPage} />
+							<Route path="/shipping" component={ShippingPage} />
+							<Route path="/shopping-cart" component={ShoppingCartPage} />
+							<Route path="/store-locator" component={StoreLocatorPage} />
+							<PrivateRoute path="/account" component={AccountPage} />
+							<Route component={Error404Page} />
+						</Switch>
+					</MainLayout> */}
+				</div>
+			</Router>
+		</Provider>
 	);
 }
 
