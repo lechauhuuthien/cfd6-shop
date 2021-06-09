@@ -1,39 +1,39 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useFormValidate from '../../../hooks/useFormValidate';
-import { loginAction } from '../../../redux/actions/authAction';
+import { loginAction, register } from '../../../redux/reducers/authReducer';
 
 function ReturnForm() {
 	/*------------------------------*/
 	const { loginError } = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
 	/*------------------------------*/
-	let { form, onInputChange, error, check } = useFormValidate(
-		{
-			username: '',
-			password: '',
-		},
-		{
-			rule: {
-				username: {
-					required: true,
-					pattern: 'email',
-				},
-				password: {
-					required: true,
-					min: 6,
-					max: 32,
-				},
-			},
-		}
-	);
+	// let { form, onInputChange, error, check } = useFormValidate(
+	// 	{
+	// 		username: '',
+	// 		password: '',
+	// 	},
+	// 	{
+	// 		rule: {
+	// 			username: {
+	// 				required: true,
+	// 				pattern: 'email',
+	// 			},
+	// 			password: {
+	// 				required: true,
+	// 				min: 6,
+	// 				max: 32,
+	// 			},
+	// 		},
+	// 	}
+	// );
 	/*------------------------------*/
 	async function _login() {
-		let error = check();
-		if (Object.keys(error).length === 0) {
-			const { username, password } = form;
-			dispatch(loginAction({ username, password }));
-		}
+		// let error = check();
+		// if (Object.keys(error).length === 0) {
+		// 	const { username, password } = form;
+		// 	dispatch(loginAction({ username, password }));
+		// }
 	}
 	/*------------------------------*/
 	return (
@@ -59,11 +59,12 @@ function ReturnForm() {
 										type="email"
 										placeholder="Email Address *"
 										name="username"
-										onChange={onInputChange}
-										value={form.username}
+										{...register('username')}
+										// onChange={onInputChange}
+										// value={form.username}
 										required
 									/>
-									{error.username && <p className="error-text">{error.username}</p>}
+									{/* {error.username && <p className="error-text">{error.username}</p>} */}
 								</div>
 							</div>
 							<div className="col-12">
@@ -78,11 +79,11 @@ function ReturnForm() {
 										type="password"
 										placeholder="Password *"
 										name="password"
-										onChange={onInputChange}
-										value={form.password}
+										// onChange={onInputChange}
+										// value={form.password}
 										required
 									/>
-									{error.password && <p className="error-text">{error.password}</p>}
+									{/* {error.password && <p className="error-text">{error.password}</p>} */}
 								</div>
 							</div>
 							<div className="col-12 col-md">

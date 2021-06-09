@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useFormValidate from '../../../hooks/useFormValidate';
-import { register } from '../../../redux/actions/authAction';
+import { register } from '../../../redux/reducers/authReducer';
 
 function NewForm() {
 	/*------------------------------*/

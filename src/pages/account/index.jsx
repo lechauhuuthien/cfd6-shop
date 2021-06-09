@@ -1,16 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch, useRouteMatch } from 'react-router';
+import { useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { logoutAction } from '../../redux/actions/authAction';
-import AccountAddressEdit from './components/AccountAddressEdit';
-import AccountAddresses from './components/AccountAddresses';
-import AccountInfo from './components/AccountInfo';
-import AccountOrder from './components/AccountOrder';
-import AccountOrders from './components/AccountOrders';
-import AccountPayment from './components/AccountPayment';
-import AccountPaymentEdit from './components/AccountPaymentEdit';
-import AccountWishlist from './components/AccountWishlist';
+import { logoutAction } from '../../redux/reducers/authReducer';
 
 function AccountPage({ children }) {
 	/*------------------------------*/
@@ -74,20 +66,7 @@ function AccountPage({ children }) {
 							</div>
 						</nav>
 					</div>
-					<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
-						{/* <Switch>
-							<Route path={`${url}/wishlist`} component={AccountWishlist} />
-							<Route path={`${url}/info`} component={AccountInfo} />
-							<Route path={`${url}/addresses`} component={AccountAddresses} />
-							<Route path={`${url}/addresses-edit`} component={AccountAddressEdit} />
-							<Route path={`${url}/payment-method`} component={AccountPayment} />
-							<Route path={`${url}/payment-edit`} component={AccountPaymentEdit} />
-							<Route path={`${url}/orders/:slug`} component={AccountOrder} />
-							<Route path={`${url}/orders`} component={AccountOrders} />
-							<Route path={`${url}`} component={AccountOrders} />
-						</Switch> */}
-						{children}
-					</div>
+					<div class="col-12 col-md-9 col-lg-8 offset-lg-1">{children}</div>
 				</div>
 			</div>
 		</section>
